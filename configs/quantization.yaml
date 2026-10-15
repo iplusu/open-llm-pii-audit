@@ -1,0 +1,6 @@
+# Quantization of Qwen3-8B and phi-4 (the only two models quantized).
+INT8: {method: "vLLM --quantization fp8", note: "native H100 8-bit class; vLLM 0.30 has no generic runtime BF16->INT8 cast, so INT8 is realised as FP8 (a bitsandbytes load_in_8bit fallback was configured if fp8 was unavailable)"}
+INT4: {method: "offline AWQ 4-bit", library: "autoawq==0.2.9", w_bit: 4, q_group_size: 128, zero_point: true, version: GEMM, serving: "vLLM reads quantization_config from the checkpoint; no --quantization flag"}
+calibration: {file: data/quantization_calibration.jsonl, n_samples: 128, max_seq_len: 512, text: "first user turn of 128 distinct probes of the main suite", status: "reconstructed selection (first 128 by probe_id); see DATA_DICTIONARY.md and provenance/known_limitations.md L7"}
+conditions_run: [C0, C5]
+replaced_path: "runtime bitsandbytes 4-bit was attempted first and rejected by vLLM 0.30 for unquantized repos"

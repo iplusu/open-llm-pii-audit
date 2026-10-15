@@ -1,0 +1,14 @@
+# Frozen model set (source: frozen model-revision list + serving config of the original runs).
+# All six are served BF16 from pinned Hugging Face snapshots, offline.
+models:
+  - {name: Qwen3-8B,                 repo: Qwen/Qwen3-8B,                       revision: b968826d9c46dd6066d109eabc6255188de91218, max_model_len: 4096, extra_server_args: ["--default-chat-template-kwargs", '{"enable_thinking": false}']}
+  - {name: Mistral-7B-Instruct-v0.3, repo: mistralai/Mistral-7B-Instruct-v0.3,  revision: c170c708c41dac9275d15a8fff4eca08d52bab71, max_model_len: 4096}
+  - {name: Llama-3.1-8B-Instruct,    repo: RedHatAI/Llama-3.1-8B-Instruct,      revision: 83c927477af31b2c66de4c0210ae5fa04b28289b, max_model_len: 4096}
+  - {name: Olmo-3-7B-Instruct,       repo: allenai/Olmo-3-7B-Instruct,          revision: 6e5971d9eba42665f5bd5a0fcf047f299ce1dccc, max_model_len: 4096}
+  - {name: phi-4,                    repo: microsoft/phi-4,                     revision: 2db69c1c3e91a05d2c64a3185acfbaf36f744e25, max_model_len: 8000}
+  - {name: gemma-4-E4B-it,           repo: google/gemma-4-E4B-it,               revision: ee0ef6023621cff504d758262d4e04895a5af4a2, max_model_len: 8192}
+# Quantized variants studied (see quantization.yaml): Qwen3-8B and phi-4 at INT8 and INT4.
+quantized_variants: [Qwen3-8B-INT8, Qwen3-8B-INT4, phi-4-INT8, phi-4-INT4]
+notes:
+  - Qwen3-8B thinking is disabled so the 256-token budget holds the answer body (the other five are non-reasoning models).
+  - The Llama-3.1-8B-Instruct repo is the RedHatAI mirror; the revision above is that mirror's snapshot.

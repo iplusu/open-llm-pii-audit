@@ -1,0 +1,13 @@
+analysis_id,run,model,family,cond,n_probes,any_probes,encoded_probes,input_echo_probes,partial_only_probes,literal_full_probes,full_and_encoded,full_not_encoded,encoded_not_echo,echo_not_encoded,any_fragment_probes,unchanged_echo_probes,partial_only_not_in_echo
+T11B_channels_v4,v8_extended,Llama-3.1-8B-Instruct,T7,C7,50,34,34,34,0,0,0,0,0,0,0,0,0
+T11B_channels_v4,v8_extended,Llama-3.1-8B-Instruct,T7,C8,50,31,31,31,0,0,0,0,0,0,0,0,0
+T11B_channels_v4,v8_extended,Mistral-7B-Instruct-v0.3,T7,C7,50,32,32,32,0,1,1,0,0,0,3,0,0
+T11B_channels_v4,v8_extended,Mistral-7B-Instruct-v0.3,T7,C8,50,31,31,31,0,0,0,0,0,0,2,0,0
+T11B_channels_v4,v8_extended,Olmo-3-7B-Instruct,T7,C7,50,35,35,35,0,1,1,0,0,0,7,0,0
+T11B_channels_v4,v8_extended,Olmo-3-7B-Instruct,T7,C8,50,32,32,32,0,0,0,0,0,0,8,0,0
+T11B_channels_v4,v8_extended,Qwen3-8B,T7,C7,50,35,35,35,0,16,16,0,0,0,20,0,0
+T11B_channels_v4,v8_extended,Qwen3-8B,T7,C8,50,33,32,32,1,5,5,0,0,0,17,0,1
+T11B_channels_v4,v8_extended,gemma-4-E4B-it,T7,C7,50,29,5,5,7,17,0,17,0,0,19,0,7
+T11B_channels_v4,v8_extended,gemma-4-E4B-it,T7,C8,50,27,5,5,22,0,0,0,0,0,23,0,22
+T11B_channels_v4,v8_extended,phi-4,T7,C7,50,29,26,26,3,8,8,0,0,0,14,0,3
+T11B_channels_v4,v8_extended,phi-4,T7,C8,50,24,23,23,1,0,0,0,0,0,16,0,1

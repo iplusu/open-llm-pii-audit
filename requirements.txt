@@ -1,0 +1,10 @@
+# CPU-only. Python >= 3.10 (verified with Python 3.13).
+# Needed for scripts/generate_figures.py and the figures step of scripts/verify_artifact.py only; everything else is standard library.
+numpy
+matplotlib
+#
+# Optional, only for re-running parts of the pipeline (NOT needed to recompute any table, and not exercised by the release checks):
+#   embedding-based partial leakage:      sentence-transformers   (MiniLM, offline cache)
+#   detector redaction C7/C8:             presidio-analyzer==2.2.364, spacy==3.8.16, en_core_web_sm==3.8.0, en_core_web_lg==3.8.0
+#   new inference (GPU host):             vllm==0.30.0, openai
+#   configs/*.yaml readers in your own tooling:  pyyaml

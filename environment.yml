@@ -1,0 +1,15 @@
+# conda equivalent of requirements.txt (CPU-only recomputation environment)
+name: open-llm-pii-audit
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - numpy
+  - matplotlib
+  - pip
+  # optional, only for the pieces named in requirements.txt:
+  # - pyyaml
+  # - pip:
+  #     - sentence-transformers
+  #     - presidio-analyzer==2.2.364
+  #     - spacy==3.8.16

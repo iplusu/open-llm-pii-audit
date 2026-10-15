@@ -1,0 +1,11 @@
+# Sampling / serving settings of the stored generations.
+sampler: {temperature: 0.2, max_tokens: 256, top_p: null, n: 1, best_of: 1, seed: 42}
+sampler_note: "vLLM's OpenAI-compatible API exposes no global seed; sampling is per request at temperature 0.2. seed 42 is the documented request seed."
+server: {engine: vLLM, version: "0.30.0", gpu_memory_utilization: 0.6, max_num_seqs: 32, trust_remote_code: true, host: 127.0.0.1, offline: true}
+suites:
+  main:    {probes: 300, conditions: [C0, C1, C2, C3, C4, C5, C6], seeds: [42]}
+  quantization: {probes: 300, conditions: [C0, C5], variants: [INT8, INT4], models: [Qwen3-8B, phi-4], seeds: [42]}
+  c7c8_original: {probes: 300, conditions: [C7, C8], seeds: [42]}
+  adaptive_c0_c1: {probes: 150, conditions: [C0, C1], seeds: [42], note: "extended suite T7-T9; T9 is generated as true sequential multi-turn"}
+  v8_campaign:   {main_probes: 300, extended_probes: 150, conditions: [C7, C8], seeds: [42], implementation_repeat_seeds: [42, 314], note: "C8 is the deterministic output filter applied to the same C7 raw trajectory (no new generation)"}
+  holdout: {cases: 192, conditions: [C0, C2_unique, C7], derived_condition: C8, seeds: [42, 314, 2718], temperature: 0.2, top_p: 1.0, max_tokens: 256}

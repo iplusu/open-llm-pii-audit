@@ -1,0 +1,13 @@
+analysis_id,run,model,intact_leak,intact_noleak,not_intact_leak,not_intact_noleak
+occurrence_coverage_v1,original_10-03_main,Llama-3.1-8B-Instruct,53,45,63,689
+occurrence_coverage_v1,original_10-03_main,Mistral-7B-Instruct-v0.3,89,9,95,657
+occurrence_coverage_v1,original_10-03_main,Olmo-3-7B-Instruct,53,45,79,673
+occurrence_coverage_v1,original_10-03_main,Qwen3-8B,39,59,74,678
+occurrence_coverage_v1,original_10-03_main,gemma-4-E4B-it,53,45,73,679
+occurrence_coverage_v1,original_10-03_main,phi-4,17,81,50,702
+occurrence_coverage_v1,v8_corrected_main,Llama-3.1-8B-Instruct,48,50,64,688
+occurrence_coverage_v1,v8_corrected_main,Mistral-7B-Instruct-v0.3,89,9,98,654
+occurrence_coverage_v1,v8_corrected_main,Olmo-3-7B-Instruct,49,49,76,676
+occurrence_coverage_v1,v8_corrected_main,Qwen3-8B,40,58,74,678
+occurrence_coverage_v1,v8_corrected_main,gemma-4-E4B-it,53,45,73,679
+occurrence_coverage_v1,v8_corrected_main,phi-4,16,82,50,702

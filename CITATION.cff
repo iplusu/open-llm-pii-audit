@@ -1,0 +1,6 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite it as below."
+title: "How Well Do Open-Weight Large Language Models Protect Personally Identifiable Information? An Empirical Audit of Leakage and Mitigations"
+type: software
+authors:
+  - family-names: Anonymous

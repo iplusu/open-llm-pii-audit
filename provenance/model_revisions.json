@@ -1,0 +1,40 @@
+{
+  "source": "frozen model-revision list of the original runs (Hugging Face snapshot commit hashes)",
+  "precision": "BF16 (all six); INT8/INT4 variants only for Qwen3-8B and phi-4",
+  "models": [
+    {
+      "name": "Qwen3-8B",
+      "repo": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    {
+      "name": "Mistral-7B-Instruct-v0.3",
+      "repo": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+    },
+    {
+      "name": "Llama-3.1-8B-Instruct",
+      "repo": "RedHatAI/Llama-3.1-8B-Instruct",
+      "revision": "83c927477af31b2c66de4c0210ae5fa04b28289b"
+    },
+    {
+      "name": "Olmo-3-7B-Instruct",
+      "repo": "allenai/Olmo-3-7B-Instruct",
+      "revision": "6e5971d9eba42665f5bd5a0fcf047f299ce1dccc"
+    },
+    {
+      "name": "phi-4",
+      "repo": "microsoft/phi-4",
+      "revision": "2db69c1c3e91a05d2c64a3185acfbaf36f744e25"
+    },
+    {
+      "name": "gemma-4-E4B-it",
+      "repo": "google/gemma-4-E4B-it",
+      "revision": "ee0ef6023621cff504d758262d4e04895a5af4a2"
+    }
+  ],
+  "quantized_checkpoints": {
+    "INT8": "vLLM fp8 runtime quantization of the same snapshot (no separate checkpoint)",
+    "INT4": "offline AWQ checkpoints derived from the same snapshots; their hashes were not recorded and the checkpoints are not included"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "records_total": 38832,
+  "generation_settings": "configs/generation.yaml",
+  "model_set": "configs/models.yaml",
+  "suites": {
+    "adaptive": {
+      "description": "extended suite T7-T9 (150 probes), C0 and C1, T9 sequential multi-turn",
+      "records": 1800,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "gemma-4-E4B-it",
+        "phi-4"
+      ],
+      "conditions": [
+        "C0",
+        "C1"
+      ],
+      "seeds": null,
+      "first_timestamp_utc": "2026-09-28T09:15:02",
+      "last_timestamp_utc": "2026-09-28T09:57:16"
+    },
+    "c7c8_original": {
+      "description": "original detector-redaction run: C7 and C8 on the 300 main probes (stored C8 is consistent with a separate generation, see known_limitations L1)",
+      "records": 3600,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "gemma-4-E4B-it",
+        "phi-4"
+      ],
+      "conditions": [
+        "C7",
+        "C8"
+      ],
+      "seeds": null,
+      "first_timestamp_utc": "2026-09-28T02:16:52",
+      "last_timestamp_utc": "2026-09-29T15:30:17"
+    },
+    "holdout": {
+      "description": "independent holdout/utility suite hu-20261003-v1: 192 cases x {C0, C2_unique, C7} x 3 seeds x 6 models (C8 derived)",
+      "records": 10368,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "gemma-4-E4B-it",
+        "phi-4"
+      ],
+      "conditions": [
+        "C0",
+        "C2_unique",
+        "C7"
+      ],
+      "seeds": [
+        42,
+        314,
+        2718
+      ],
+      "first_timestamp_utc": "9",
+      "last_timestamp_utc": "0"
+    },
+    "main": {
+      "description": "C0-C6 oracle-redaction matrix (6 BF16 models x 7 conditions x 300 probes) + quantized C0/C5 (4 variants x 2 conditions x 300); C3/C5/C6 are the canonical (B1v2) cells",
+      "records": 15000,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "Qwen3-8B-INT4",
+        "Qwen3-8B-INT8",
+        "gemma-4-E4B-it",
+        "phi-4",
+        "phi-4-INT4",
+        "phi-4-INT8"
+      ],
+      "conditions": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "seeds": null,
+      "first_timestamp_utc": "2026-09-27T13:32:23",
+      "last_timestamp_utc": "2026-09-29T14:49:37"
+    },
+    "v8_extended": {
+      "description": "V8 campaign: extended suite C0, C1, C7, C8",
+      "records": 3600,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "gemma-4-E4B-it",
+        "phi-4"
+      ],
+      "conditions": [
+        "C0",
+        "C1",
+        "C7",
+        "C8"
+      ],
+      "seeds": [
+        42
+      ],
+      "first_timestamp_utc": "2026-10-05T14:45:45",
+      "last_timestamp_utc": "2026-10-05T19:36:57"
+    },
+    "v8_impl_repeat": {
+      "description": "V8 implementation-repeat records (C7_original_impl / C7_repaired_type, seeds 42 and 314)",
+      "records": 864,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "gemma-4-E4B-it",
+        "phi-4"
+      ],
+      "conditions": [
+        "C7_original_impl_s2718",
+        "C7_original_impl_s314",
+        "C7_original_impl_s42",
+        "C7_repaired_type_s2718",
+        "C7_repaired_type_s314",
+        "C7_repaired_type_s42"
+      ],
+      "seeds": [
+        42,
+        314,
+        2718
+      ],
+      "first_timestamp_utc": "2026-10-05T14:38:08",
+      "last_timestamp_utc": "2026-10-05T21:57:51"
+    },
+    "v8_main": {
+      "description": "V8 campaign: C7 on the 300 main probes with the corrected detector; C8 = output filter on the same C7 generation",
+      "records": 3600,
+      "models": [
+        "Llama-3.1-8B-Instruct",
+        "Mistral-7B-Instruct-v0.3",
+        "Olmo-3-7B-Instruct",
+        "Qwen3-8B",
+        "gemma-4-E4B-it",
+        "phi-4"
+      ],
+      "conditions": [
+        "C7",
+        "C8"
+      ],
+      "seeds": [
+        42
+      ],
+      "first_timestamp_utc": "2026-10-05T14:38:01",
+      "last_timestamp_utc": "2026-10-05T21:57:42"
+    }
+  },
+  "excluded_from_this_repository": {
+    "superseded_pre_B1v2_cells": "6,600 first-pass records (raw main C3/C5/C6 for six BF16 models = 5,400 and quantized C5 = 1,200) replaced by the canonical B1v2 cells; no table or test reads them",
+    "v8_unselected_attempts": "V8 campaign attempts not selected by the V8 selection manifest (e.g. the 100 main-C7 Mistral requests that failed with HTTP 400 and were re-sent); only the 8,064 selected records are included",
+    "call_ledgers_and_server_logs": "per-call ledgers and server logs contain run-host paths and are not included"
+  }
+}

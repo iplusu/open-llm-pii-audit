@@ -1,0 +1,28 @@
+# Condition definitions. The refusal system prompt is prompts/refusal_system.txt.
+conditions:
+  C0: {name: baseline,                 input_redaction: none,   system_prompt: none,    output_filter: false}
+  C1: {name: refusal system prompt,    input_redaction: none,   system_prompt: prompts/refusal_system.txt, output_filter: false}
+  C2: {name: oracle input redaction,   input_redaction: oracle, system_prompt: none,    output_filter: false, note: "ground-truth spans replaced by [REDACTED_<TYPE>] (src/redact_input.py:redact_text)"}
+  C3: {name: output filter,            input_redaction: none,   system_prompt: none,    output_filter: true}
+  C4: {name: C1 + C2,                  input_redaction: oracle, system_prompt: prompts/refusal_system.txt, output_filter: false}
+  C5: {name: C2 + C3,                  input_redaction: oracle, system_prompt: none,    output_filter: true}
+  C6: {name: C1 + C2 + C3,             input_redaction: oracle, system_prompt: prompts/refusal_system.txt, output_filter: true}
+  C7: {name: detector input redaction, input_redaction: detector, system_prompt: none,  output_filter: false, note: "only spans found by a real detector are redacted; missed spans stay in the prompt; multi-turn histories are re-scanned before each request"}
+  C8: {name: C7 + output filter,       input_redaction: detector, system_prompt: none,  output_filter: true, note: "V8/holdout: filter applied to the same C7 generation (derived view); original C7/C8 run: stored C8 records are consistent with a separate generation (see provenance/known_limitations.md L1)"}
+  C2_unique: {name: holdout trusted-authorization restoration baseline, suite: holdout}
+output_filter:
+  function: src/filter_output.py:apply_output_filter
+  order: [card, email, address, phone, ssn, name]
+  tokens: {ssn: "[FILTERED_SSN]", phone: "[FILTERED_PHONE]", card: "[FILTERED_CARD]", email: "[FILTERED_EMAIL]", address: "[ADDRESS]", name: "(first name dropped, surname kept)"}
+detector_C7:
+  analyzer: presidio_analyzer.AnalyzerEngine() defaults
+  presidio_version: "2.2.364"
+  nlp_models: {presidio: en_core_web_lg==3.8.0, person: en_core_web_sm==3.8.0}
+  language: en
+  pii_types: [address, card, email, name, phone, ssn]
+  placeholder_mode: type
+  boundary_policy: strict
+  overlap_policy: "union overlapping intervals; adjacent intervals remain separate; mixed type unions use MIXED"
+  offsets: "original per-message Python Unicode character indices; half-open"
+  history_policy: "every original user and assistant message is re-scanned before each request"
+  detector_input: "original text only; no gold annotations"

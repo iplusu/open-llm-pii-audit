@@ -1,0 +1,26 @@
+{
+  "gpu": "NVIDIA H100 NVL, 93.09 GiB device memory (shared with other jobs; vLLM gpu_memory_utilization 0.45-0.6)",
+  "gpu_count_used": 1,
+  "cpu_threads_visible_to_serving_process": 48,
+  "inference_engine": {
+    "name": "vLLM",
+    "version": "0.30.0",
+    "engine": "V1",
+    "attention_backend": "FLASH_ATTN",
+    "flashinfer_sampling": "disabled (VLLM_USE_FLASHINFER_SAMPLING=0)",
+    "v8_campaign": "enforce-eager (torch.compile and CUDA graphs disabled)",
+    "max_num_seqs": 32,
+    "trust_remote_code": true,
+    "offline": true
+  },
+  "not_recorded": [
+    "NVIDIA driver version",
+    "CUDA toolkit version",
+    "torch version",
+    "transformers version",
+    "OS image",
+    "total host RAM"
+  ],
+  "analysis_machine": "CPU only; any x86-64 or arm64 host with Python >= 3.10 (recomputation takes about 5 minutes)",
+  "source": "serving configuration, run configuration and engine start-up logs of the original runs; host identifiers removed"
+}
